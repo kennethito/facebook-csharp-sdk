@@ -870,7 +870,7 @@ namespace Facebook
             get { return _httpWebResponse; }
         }
 
-#if !(SILVERLIGHT || NETFX_CORE)
+#if !(SILVERLIGHT)
 
 		/// <summary>
 		/// Opens the request stream synchronously for write.
@@ -882,7 +882,7 @@ namespace Facebook
 		{
 			try
 			{
-				return _httpWebRequest.GetRequestStream();
+				return _httpWebRequest.GetRequestStreamAsync().GetAwaiter().GetResult();
 			}
 			catch (WebException webException)
 			{
@@ -914,7 +914,7 @@ namespace Facebook
 			try
 			{
 				if (_httpWebResponse == null)
-					_httpWebResponse = _httpWebRequest.GetResponse();
+					_httpWebResponse = _httpWebRequest.GetResponseAsync().GetAwaiter().GetResult();
 				return _httpWebResponse.GetResponseStream();
 			}
 			catch (WebException webException)
@@ -2133,7 +2133,9 @@ namespace Facebook
 		/// <returns></returns>
 		public static Task<int> ReadTask(Stream stream, byte[] buffer, int offset, int count)
 		{
-			return Task<int>.Factory.FromAsync(stream.BeginRead, stream.EndRead, buffer, offset, count, null, TaskCreationOptions.None);
+            //return Task<int>.Factory.FromAsync(stream.BeginRead, stream.EndRead, buffer, offset, count, null, TaskCreationOptions.None);
+
+            return stream.ReadAsync(buffer, offset, count);
 		}
 
 		/// <summary>
@@ -2146,8 +2148,10 @@ namespace Facebook
 		/// <returns></returns>
 		public static Task WriteTask(Stream stream, byte[] buffer, int offset, int count)
 		{
-			return Task.Factory.FromAsync(stream.BeginWrite, stream.EndWrite, buffer, offset, count, null, TaskCreationOptions.None);
-		}
+            //return Task.Factory.FromAsync(stream.BeginWrite, stream.EndWrite, buffer, offset, count, null, TaskCreationOptions.None);
+
+            return stream.WriteAsync(buffer, offset, count);
+        }
 
 #endif
 

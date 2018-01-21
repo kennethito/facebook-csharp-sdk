@@ -46,7 +46,7 @@ namespace Facebook.Tests
 
             mockRequest.SetupProperty(r => r.Method);
             mockRequest.SetupProperty(r => r.ContentType);
-            mockRequest.SetupProperty(r => r.ContentLength);
+            //mockRequest.SetupProperty(r => r.ContentLength);
             mockAsyncResult
                 .Setup(ar => ar.AsyncWaitHandle)
                 .Returns((ManualResetEvent)null);
@@ -54,8 +54,8 @@ namespace Facebook.Tests
             var responseStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(json));
 
             mockRequest
-                .Setup(r => r.GetResponse())
-                .Returns(response);
+                .Setup(r => r.GetResponseAsync())
+                .ReturnsAsync(response);
 
             AsyncCallback callback = null;
 
@@ -111,7 +111,7 @@ namespace Facebook.Tests
 
             mockRequest.SetupProperty(r => r.Method);
             mockRequest.SetupProperty(r => r.ContentType);
-            mockRequest.SetupProperty(r => r.ContentLength);
+            //mockRequest.SetupProperty(r => r.ContentLength);
             mockAsyncResult
                 .Setup(ar => ar.AsyncWaitHandle)
                 .Returns((ManualResetEvent)null);
@@ -121,7 +121,7 @@ namespace Facebook.Tests
                 .Returns<HttpWebResponseWrapper>(null);
 
             mockRequest
-                .Setup(r => r.GetResponse())
+                .Setup(r => r.GetResponseAsync())
                 .Throws(webException);
 
             mockRequest
@@ -179,7 +179,7 @@ namespace Facebook.Tests
 
             mockRequest.SetupProperty(r => r.Method);
             mockRequest.SetupProperty(r => r.ContentType);
-            mockRequest.SetupProperty(r => r.ContentLength);
+            //mockRequest.SetupProperty(r => r.ContentLength);
             mockAsyncResult
                .Setup(ar => ar.AsyncWaitHandle)
                .Returns((ManualResetEvent)null);
@@ -199,7 +199,7 @@ namespace Facebook.Tests
                 .Returns(response);
 
             mockRequest
-                .Setup(r => r.GetResponse())
+                .Setup(r => r.GetResponseAsync())
                 .Throws(webException);
 
             mockRequest
@@ -230,7 +230,7 @@ namespace Facebook.Tests
 
         public static void VerifyGetResponse(this Mock<HttpWebRequestWrapper> mockRequest)
         {
-            mockRequest.Verify(r => r.GetResponse());
+            mockRequest.Verify(r => r.GetResponseAsync());
         }
 
         public static void VerifyBeginGetResponse(this Mock<HttpWebRequestWrapper> mockRequest)

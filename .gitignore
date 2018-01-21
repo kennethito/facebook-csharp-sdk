@@ -45,3 +45,6 @@ Dist/
 packages/
 NuGet.exe
 doc_output/
+.vs/
+tools/
+artifacts/

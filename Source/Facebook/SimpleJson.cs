@@ -64,9 +64,10 @@ using System.Dynamic;
 #endif
 using System.Globalization;
 using System.Reflection;
-using System.Runtime.Serialization;
+//using System.Runtime.Serialization;
 using System.Text;
 using Facebook.Reflection;
+using System.Runtime.Serialization;
 
 // ReSharper disable LoopCanBeConvertedToQuery
 // ReSharper disable RedundantExplicitArrayCreation

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;NETFX_CORE;SIMPLE_JSON_INTERNAL;SIMPLE_JSON_DYNAMIC;SIMPLE_JSON_DATACONTRACT;FLUENTHTTP_URLENCODING;FLUENTHTTP_HTMLENCODING;TPL;ASYNC_AWAIT;FLUENTHTTP_CORE_TPL;FLUENTHTTP_CORE_STREAM;TYPEINFO;</DefineConstants>
+    <PackageId>Facebook-NetStandard</PackageId>
+    <Authors>Kenneth Ito</Authors>
+    <Company />
+    <Product />
+    <Description>A netstandard only port of https://github.com/facebook-csharp-sdk/facebook-csharp-sdk</Description>
+    <RepositoryUrl>https://github.com/kennethito/facebook-csharp-sdk</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/kennethito/facebook-csharp-sdk</PackageProjectUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.EventBasedAsync" Version="4.3.0" />
+    <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
+    <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
+  </ItemGroup>
+</Project>

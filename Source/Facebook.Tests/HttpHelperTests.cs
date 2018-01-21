@@ -16,7 +16,7 @@ namespace Facebook.Tests
                 {
                     sb.Append("a");
                 }
-                Assert.DoesNotThrow(() => HttpHelper.UrlEncode(sb.ToString()));
+                HttpHelper.UrlEncode(sb.ToString());
             }
 
             [Fact]

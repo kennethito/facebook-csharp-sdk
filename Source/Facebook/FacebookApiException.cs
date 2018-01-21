@@ -21,7 +21,7 @@ namespace Facebook
 {
     using System;
     using System.Globalization;
-    using System.Runtime.Serialization;
+    //using System.Runtime.Serialization;
 
     /// <summary>
     /// Represent errors that occur while calling a Facebook API.
